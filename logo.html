@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Our Product page
+  </title>
+  <style>
+    body {
+      background: linear-gradient(270deg, #05f0ff 30%, #963cff) #963cff;
+      /* background: linear-gradient(90deg,#ff2882,#963cfe)!important; */
+      margin: 0%;
+      padding: 0%;
+    }
+  
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 200px);
+      justify-content: center;
+      align-items: center;
+      grid-gap: 5px;
+      height: 100vh;
+    }
+  
+    .grid img {
+      width: 200px;
+      height: 200px;
+      cursor: pointer;
+    }
+  
+    #lightbox {
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .8);
+      display: none;
+    }
+  
+    #lightbox.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      padding: 4px;
+      background-color: black;
+      border: 2px solid white;
+    }
+  
+    .footer {
+      width: 100%;
+      height: 60px;
+      background-color: rgb(43, 42, 42);
+      color: white;
+      text-align: center;
+    }
+  
+    /** LIGHTBOX MARKUP  target **/
+  
+    /* .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1em;
+    background: rgba(0, 0, 0, 0.8);
+  } */
+  
+    /* Unhide the lightbox when it's the target */
+  
+  
+    /* .lightbox:target {
+    display: block;
+  } */
+  
+    /* .lightbox span {
+    display: block;
+    width: 100%;
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  } */
+    .lightbox:focus img {
+      position: absolute;
+      object-fit: cover;
+      align-items: center;
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div style="text-align:center">
+    <h1>TOP CLUBS</h1>
+  </div>
+
+  <!-- <div class="row">
+    <a href="javascript:(0)" class="lightbox">
+      <img src="images/manunited.png"  width="300" height="250" class="img"></a>
+    <a href="javascript:(0)" class="lightbox">
+      <img src="images/mancity.png"  width="300" height="250" class="img"></a>
+    <a href="javascript:(0)" class="lightbox">
+      <img src="images/arsenal.png"  width="300" height="250" class="img"></a>
+  </div> -->
+
+  
+
+
+  <div class="grid">
+    <img src="images/manunited.png">
+    <img src="images/mancity.png">
+    <img src="images/arsenal.png">
+    <img src="images/chelsea.png">
+    <img src="images/liverpool.png">
+    <img src="images/astonvilla.png">
+    <img src="images/leister.png">
+    <img src="images/westham.png">
+    <img src="images/southampton.png">
+  </div>
+  <div style="text-align:center">
+    
+  </div>
+  <div class="footer">
+    @Copyright 
+  </div>
+  </div>
+  <script>
+    const lightbox = document.createElement("div");
+    lightbox.id = "lightbox";
+    document.body.appendChild(lightbox);
+
+    const images = document.querySelectorAll("img");
+    images.forEach((image) => {
+      image.addEventListener("click", (e) => {
+        lightbox.classList.add("active");
+        const img = document.createElement("img");
+    img.src = image.src;
+    while (lightbox.firstChild) {
+      lightbox.removeChild(lightbox.firstChild);
+    }
+    lightbox.appendChild(img);
+  });
+});
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target !== e.currentTarget) return;
+  lightbox.classList.remove("active");
+});
+  </script> 
+</body>
+
+</html>
